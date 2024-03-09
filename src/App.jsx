@@ -1,14 +1,25 @@
-import { Pokemon } from "./pages/home"
+import { HomePage } from "./pages/home"
+import { createGlobalStyle } from "styled-components"
 
 
 function App() {
 
   return (
     <>
-      <Pokemon />
+      <GlobalStyle />
+      <HomePage />
     </>
   )
 }
+
+const GlobalStyle = createGlobalStyle `
+  * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: "Nunito", sans-serif;
+  }
+`
 
 export default App
 
