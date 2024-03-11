@@ -15,11 +15,13 @@ export async function getPokemonData(pokeUrl) {
     try {
         const response = await axios.get(pokeUrl);
         const data = response.data;
+        console.log(data);
         return {
             id: data.id,
             name: data.name,
             abilities: data.abilities.map(ability => ability.ability.name).join(", "),
-            images: data.sprites.other.dream_world.front_default,
+            pokemonImage: data.sprites.other.dream_world.front_default,
+            images: data.sprites.front_default,
             type: data.types.map(type => type.type.name).join(" "),
             moves: data.moves.slice(0, 4).map(move => move.move.name).join(", ")
         };
