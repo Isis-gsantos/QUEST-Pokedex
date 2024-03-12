@@ -30,4 +30,14 @@ const Container = styled.section`
     img {
         max-width: 400px;
     }
+
+    @media (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        img {
+            max-width: 100%;
+        }
+    }
 `

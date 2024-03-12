@@ -3,6 +3,7 @@ import { fetchPokemonKanto, getPokemonData, getPokemonTypes } from "../Functions
 import styled, { ThemeProvider } from "styled-components";
 import { ThemeContext } from "../Context/ThemeContext";
 import { Link } from "react-router-dom";
+import pokeballImage from '../../images/pokeball-minimalist.png'
 
 export const PokemonsHome = () => {
     const [pokemons, setPokemons] = useState([]);
@@ -47,7 +48,8 @@ export const PokemonsHome = () => {
                     <Content>
                         {pokemons.slice(0, totalPokemonsToShow).map(pokemon => (
                             <Link to={`/pokemon/${pokemon.id}`} key={pokemon.id}>
-                                <PokemonInfo key={pokemon.id} type={pokemon.type}>
+                                <PokemonInfo key={pokemon.id} type={pokemon.type}
+                                style={{backgroundImage: `url(${pokeballImage})`, backgroundRepeat: "no-repeat", backgroundPosition: 'left'}}>
                                     <img src={pokemon.images} alt={pokemon.name} />
                                     <section>
                                         <span># {pokemon.id}</span>
@@ -81,6 +83,20 @@ const Content = styled.article`
     grid-template-columns: repeat(4, 1fr);
     padding: 40px 20px;
     gap: 25px;
+
+    @media (max-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 900px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+        display: flex;
+        flex-direction: column;
+
+    }
 `
 
 const PokemonInfo = styled.div`
@@ -118,7 +134,7 @@ const PokemonInfo = styled.div`
     transition: .3s ease-in-out;
     box-shadow: -8px 5px 20px 2px rgba(0,0,0,0.1);
     text-align: center;
-    
+    position: relative;
 
     &:hover {
         transform: scale(1.1);
@@ -145,18 +161,6 @@ const PokemonInfo = styled.div`
         height: 130px;
         position: relative; 
         margin-left: 0 -10px;
-
-            &::before {
-                content: '';
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                background-color: #eee;
-                z-index: 100; 
-                border-radius: 50%; 
-            }
     }      
 `
 

@@ -23,7 +23,13 @@ export async function getPokemonData(pokeUrl) {
             pokemonImage: data.sprites.other.dream_world.front_default,
             images: data.sprites.front_default,
             type: data.types.map(type => type.type.name).join(" "),
-            moves: data.moves.slice(0, 4).map(move => move.move.name).join(", ")
+            moves: data.moves.slice(0, 4).map(move => move.move.name).join(", "),
+            hpStat: data.stats[0].base_stat,
+            attackStat: data.stats[1].base_stat,
+            defenseStat: data.stats[2].base_stat,
+            specialAttackStat: data.stats[3].base_stat,
+            specialDefenseStat: data.stats[4].base_stat,
+            speedStat: data.stats[5].base_stat
         };
     } catch (error) {
         console.error('Erro ao obter dados do pokémon:', error);

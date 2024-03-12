@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle `
     padding: 0;
     list-style: none;
     font-family: "Nunito", sans-serif;
-    text-decoration: none
+    text-decoration: none;
   }
 `
 
